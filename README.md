@@ -1,0 +1,19 @@
+# QA Test Reports API
+
+Standalone FastAPI microservice for test-report functionality. It is reachable
+on the internal Compose network; clients should call it through `qa-insights-api`,
+which validates the Keycloak bearer token and proxies `/api/test-reports/*`.
+
+The health endpoint is `/health`. `GET /api/test-reports/summary` returns a
+fresh randomized seven-day snapshot with totals, daily results, and per-suite
+results. The dashboard renders the snapshot as Chart.js visualizations. Run
+locally with:
+
+```sh
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
+```
+
+Run tests with `pytest -q`.
