@@ -6,8 +6,15 @@ which validates the Keycloak bearer token and proxies `/api/test-reports/*`.
 
 The health endpoint is `/health`. `GET /api/test-reports/summary` returns a
 fresh randomized seven-day snapshot with totals, daily results, and per-suite
-results. The dashboard renders the snapshot as Chart.js visualizations. Run
-locally with:
+results. The dashboard renders the snapshot as Chart.js visualizations.
+
+HTTP routes are in `app/api/routes/`, response models in `app/schemas/`,
+summary assembly in `app/services/`, and generated sample results in
+`app/dummy_data/`. This service currently has no database layer; report
+repositories and persistence models should be added when storage requirements
+are defined.
+
+Run locally with:
 
 ```sh
 python -m venv .venv
